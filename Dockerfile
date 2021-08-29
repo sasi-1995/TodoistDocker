@@ -9,10 +9,12 @@ RUN apt update && \
   apt install -y apt-transport-https && \
   apt update && \
   apt install -y dotnet-sdk-5.0
+
 RUN dotnet tool install --global dotnet-ef
 
 WORKDIR /app
 COPY Todoist .
 RUN dotnet restore
 EXPOSE 5000/tcp
-ENTRYPOINT ["dotnet","run","--server.urls","http://*:5000"]
+RUN chmod +x ./entrypoint.sh
+CMD /bin/bash ./entrypoint.sh
