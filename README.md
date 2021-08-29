@@ -31,6 +31,22 @@ Dockerized version of Todoist
    - Once the webserver starts, it ensures all the code migrations are applied and accepts the http requests.
 
 # How to get the magic working ?
-  - Simple just run docker-compose up
+  - Simple just run docker-compose up and wait for 2 minutes, this wait is explicitly configured, because the database needs to complete it's operations, before web server
+    comes up
+  - If you see following output its indication that the the app has started 
+    ```
+    web_1  | SQL Server is up - executing command
+    web_1  | Building...
+    web_1  | warn: Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager[35]
+    web_1  |       No XML encryptor configured. Key {1e7fb80c-ee13-426b-a18a-fb0c14036410} may be persisted to storage in unencrypted form.
+    web_1  | info: Microsoft.Hosting.Lifetime[0]
+    web_1  |       Now listening on: http://[::]:5000
+    web_1  | info: Microsoft.Hosting.Lifetime[0]
+    web_1  |       Application started. Press Ctrl+C to shut down.
+    web_1  | info: Microsoft.Hosting.Lifetime[0]
+    web_1  |       Hosting environment: Development
+    web_1  | info: Microsoft.Hosting.Lifetime[0]
+    web_1  |       Content root path: /app
+    ```
   - Once you see the application started navigate to http://localhost:5000
   
